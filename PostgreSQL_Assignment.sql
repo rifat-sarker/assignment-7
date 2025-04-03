@@ -52,7 +52,7 @@ SELECT * from orders;
 DROP TABLE orders;
 
 -- make order
-INSERT INTO orders (customer_id,book_id,quantity) VALUES(3,1,1);
+INSERT INTO orders (customer_id,book_id,quantity) VALUES(2,2,1);
 
 
 
@@ -66,13 +66,20 @@ SELECT * from books WHERE price IN (SELECT max(price) from books);
 
 
 --3️⃣ Find the total number of orders placed by each customer.
-
-SELECT name, COUNT(o.id) as total_orders from customers as c
-    JOIN orders as o on c.id = o.customer_id
+SELECT name, COUNT(o.id) AS total_orders from customers AS c
+    JOIN orders AS o on c.id = o.customer_id
     GROUP BY name;
 
 
+-- 4️⃣ Calculate the total revenue generated from book sales.
+select * from orders
 
+
+-- 5️⃣ List all customers who have placed more than one order.
+
+SELECT name, COUNT(o.id) AS orders_count from customers AS c
+    JOIN orders AS o on c.id = o.customer_id
+    GROUP BY name HAVING count(o.id) > 1;
 
 
 
