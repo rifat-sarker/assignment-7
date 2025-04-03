@@ -1,4 +1,4 @@
--- Active: 1742810087227@@127.0.0.1@5432@bookstore_db
+-- Active: 1742917181621@@127.0.0.1@5432@bookstore_db@public
 
 -- create relation/table with type
 CREATE TABLE books (
@@ -37,3 +37,16 @@ select * from customers;
 INSERT INTO customers (name, email) VALUES ('Alice', 'alice@email.com'), ('Bob', 'bob@email.com'), ('Charlie', 'charlie@email.com') 
 
 DROP TABLE customers;
+
+
+--Problem-1️⃣ Find books that are out of stock.
+SELECT * from books WHERE stock = 0;
+
+
+-- Problem-2️⃣ Retrieve the most expensive book in the store.
+SELECT * from books WHERE price IN (SELECT max(price) from books);
+
+
+
+
+select * from books;
