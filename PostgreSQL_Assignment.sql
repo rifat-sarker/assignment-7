@@ -39,12 +39,39 @@ INSERT INTO customers (name, email) VALUES ('Alice', 'alice@email.com'), ('Bob',
 DROP TABLE customers;
 
 
---Problem-1️⃣ Find books that are out of stock.
+-- create order table
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(id),
+    book_id INTEGER REFERENCES books(id),
+    quantity INT CHECK (quantity > 0),
+    order_date DATE DEFAULT CURRENT_DATE
+)
+
+SELECT * from orders;
+DROP TABLE orders;
+
+-- make order
+INSERT INTO orders (customer_id,book_id,quantity) VALUES(3,1,1);
+
+
+
+--1️⃣ Find books that are out of stock.
 SELECT * from books WHERE stock = 0;
 
 
--- Problem-2️⃣ Retrieve the most expensive book in the store.
+--2️⃣ Retrieve the most expensive book in the store.
 SELECT * from books WHERE price IN (SELECT max(price) from books);
+
+
+
+--3️⃣ Find the total number of orders placed by each customer.
+
+SELECT name, COUNT(o.id) as total_orders from customers as c
+    JOIN orders as o on c.id = o.customer_id
+    GROUP BY name;
+
+
 
 
 
