@@ -5,11 +5,11 @@ CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     author VARCHAR(50) NOT NULL,
-    price NUMERIC CHECK (price > 0) ,
+    price DECIMAL(10, 2) CHECK (price > 0) ,
     stock INT DEFAULT 0 CHECK (stock >= 0),
     published_year INT NOT NULL
-)
-
+);
+drop table books;
 -- get / see all data from books table
 select * from books;
 
@@ -80,6 +80,15 @@ select * from orders
 SELECT name, COUNT(o.id) AS orders_count from customers AS c
     JOIN orders AS o on c.id = o.customer_id
     GROUP BY name HAVING count(o.id) > 1;
+
+
+-- 6️⃣ Find the average price of books in the store.
+SELECT round(AVG(price),2) AS avg_book_price from books;
+
+-- 7️⃣ Increase the price of all books published before 2000 by 10%.
+
+-- 8️⃣ Delete customers who haven't placed any orders.
+
 
 
 
