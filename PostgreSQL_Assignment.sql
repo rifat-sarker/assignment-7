@@ -16,7 +16,7 @@ select * from books;
 -- insert/add multiple data in the table
 INSERT INTO books ( title, author, price,stock, published_year) VALUES ('The Pragmatic Programmer','Andrew Hunt', 40.00, 10, 1999), ('Clean Code', 'Robert C. Martin', 35.00, 5, 2008), ('You Do not Know JS','Kyle Simpson', 30.00, 8, 2014), ('Refactoring', 'Martin Fowler', 50.00, 3, 1999), ('Database Design Principles', 'Jane Smith', 20.00, 0, 2018)
 
-INSERT INTO books VALUES (6,'Web Developer', 'Rifat Sarker', 50.00, 5, 2025);
+-- INSERT INTO books VALUES (6,'Web Developer', 'Rifat Sarker', 50.00, 5, 2025);
 
 
 
@@ -29,12 +29,11 @@ CREATE TABLE customers (
 )
 
 
---  get all from customers relation
-select * from customers;
-
-
 -- insert multiple customers data
 INSERT INTO customers (name, email) VALUES ('Alice', 'alice@email.com'), ('Bob', 'bob@email.com'), ('Charlie', 'charlie@email.com') 
+
+--  get all from customers relation
+select * from customers;
 
 DROP TABLE customers;
 
@@ -85,7 +84,16 @@ SELECT name, COUNT(o.id) AS orders_count from customers AS c
 -- 6️⃣ Find the average price of books in the store.
 SELECT round(AVG(price),2) AS avg_book_price from books;
 
+
+
+
 -- 7️⃣ Increase the price of all books published before 2000 by 10%.
+   UPDATE books 
+   SET price = price * 1.10
+   WHERE published_year < 2000;
+
+
+
 
 -- 8️⃣ Delete customers who haven't placed any orders.
 
