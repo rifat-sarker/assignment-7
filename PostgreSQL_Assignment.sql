@@ -51,7 +51,7 @@ SELECT * from orders;
 DROP TABLE orders;
 
 -- make order
-INSERT INTO orders (customer_id,book_id,quantity) VALUES(2,2,1);
+INSERT INTO orders (customer_id,book_id,quantity) VALUES(1,2,1);
 
 
 
@@ -96,8 +96,10 @@ SELECT round(AVG(price),2) AS avg_book_price from books;
 
 
 -- 8️⃣ Delete customers who haven't placed any orders.
-
+ DELETE from customers
+    WHERE id NOT IN (SELECT customer_id FROM orders);
 
 
 
 select * from books;
+select * from customers;
