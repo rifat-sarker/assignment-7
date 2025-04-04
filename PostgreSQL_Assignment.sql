@@ -16,9 +16,6 @@ select * from books;
 -- insert/add multiple data in the table
 INSERT INTO books ( title, author, price,stock, published_year) VALUES ('The Pragmatic Programmer','Andrew Hunt', 40.00, 10, 1999), ('Clean Code', 'Robert C. Martin', 35.00, 5, 2008), ('You Do not Know JS','Kyle Simpson', 30.00, 8, 2014), ('Refactoring', 'Martin Fowler', 50.00, 3, 1999), ('Database Design Principles', 'Jane Smith', 20.00, 0, 2018)
 
--- INSERT INTO books VALUES (6,'Web Developer', 'Rifat Sarker', 50.00, 5, 2025);
-
-
 
 -- create customers relation/table
 CREATE TABLE customers (
@@ -51,12 +48,12 @@ SELECT * from orders;
 DROP TABLE orders;
 
 -- make order
-INSERT INTO orders (customer_id,book_id,quantity) VALUES(1,2,1);
+INSERT INTO orders (customer_id,book_id,quantity) VALUES(2,3,1), (2,1,2);
 
 
 
 --1️⃣ Find books that are out of stock.
-SELECT * from books WHERE stock = 0;
+SELECT title from books WHERE stock = 0;
 
 
 --2️⃣ Retrieve the most expensive book in the store.
